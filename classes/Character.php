@@ -82,6 +82,8 @@ class Character
      */
     public function attack(Character $opponent, int $coefficient=1): self
     {
+        // This example is shorter but less understandable
+        // $opponent->setHealthPoint($opponent->getHealthPoint() - ((10 * $this->experience) * $coefficient));
         switch ($this->experience) {
             case self::NOVICE:
                 $opponent->setHealthPoint($opponent->getHealthPoint() - (10 * $coefficient));
