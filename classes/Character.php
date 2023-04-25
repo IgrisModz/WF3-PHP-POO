@@ -43,7 +43,7 @@ class Character
      * @default 100
      */
     private int $healthPoint = 100;
-    
+
     /**
      * Character experience
      *
@@ -80,7 +80,7 @@ class Character
      * @param integer $coefficient
      * @return self
      */
-    public function attack(Character $opponent, int $coefficient=1): self
+    public function attack(Character $opponent, int $coefficient = 1): self
     {
         // This example is shorter but less understandable
         // $opponent->setHealthPoint($opponent->getHealthPoint() - ((10 * $this->experience) * $coefficient));
@@ -95,6 +95,9 @@ class Character
                 $opponent->setHealthPoint($opponent->getHealthPoint() - (30 * $coefficient));
                 break;
         }
+
+        $this->levelUp($opponent);
+
         return $this;
     }
 
@@ -110,7 +113,7 @@ class Character
         $this->attack($opponent, 2);
         return $this;
     }
-    
+
     /**
      * The character makes an Secret Attack against his opponent
      * A Secret Attack doesn't affect his opponent if he has more than 50 health points
@@ -121,10 +124,12 @@ class Character
      */
     public function secretAttack(Character $opponent): self
     {
-        if($opponent->getHealthPoint() < 50)
-        {
+        if ($opponent->getHealthPoint() < 50) {
             $opponent->setHealthPoint(0);
         }
+        
+        $this->levelUp($opponent);
+        
         return $this;
     }
 
@@ -144,14 +149,24 @@ class Character
      *
      * @return self
      */
-    public function levelUp(): self
+    public function levelUp(Character $opponent): self
     {
-        switch($this->experience)
-        {
-            case self::NOVICE:
-                $this->experience = self::MEDIUM;
-            case self::MEDIUM:
-                $this->experience = self::EXPERT;
+        if ($opponent->getHealthPoint() === 0) {
+            switch ($this->experience) {
+                case self::NOVICE:
+                    $this->setExperience(self::MEDIUM);
+                    break;
+                case self::MEDIUM:
+                    $this->setExperience(self::EXPERT);
+                    break;
+                case self::EXPERT:
+                    // Do nothing
+                    // Already the Boss
+                    break;
+                default:
+                    $this->setExperience(self::NOVICE);
+                    break;
+            }
         }
         return $this;
     }

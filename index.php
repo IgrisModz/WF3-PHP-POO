@@ -26,6 +26,8 @@ $superman->greet($batman);
 
     <h1><?= $title ?></h1>
 
+    <h2>Pr&eacute;sentation</h2>
+
     <fieldset>
         <legend><?= strtoupper($batman->getName()) ?>:</legend>
         name: <?= $batman->getName() ?><br>
@@ -111,14 +113,27 @@ $superman->greet($batman);
 
     <div>
         Superman est au tapie et Batman gagne un point d'exp&eacute;rience.
-        <?php $batman->levelUp() ?>
     </div>
 
     <div>
         <?= notifyExperience($batman) ?>
     </div>
 
+    <h2>R&eacute;sultat</h2>
+    
+    <fieldset>
+        <legend><?= strtoupper($batman->getName()) ?>:</legend>
+        name: <?= $batman->getName() ?><br>
+        health point: <?= $batman->getHealthPoint() ?><br>
+        experience: <?= $batman->getExperience() ?><br>
+    </fieldset>
 
+    <fieldset>
+        <legend><?= strtoupper($superman->getName()) ?>:</legend>
+        name: <?= $superman->getName() ?><br>
+        health point: <?= $superman->getHealthPoint() ?><br>
+        experience: <?= $superman->getExperience() ?><br>
+    </fieldset>
 </body>
 
 </html>
