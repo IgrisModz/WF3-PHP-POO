@@ -48,7 +48,7 @@ class Character
      * Character experience
      *
      * @var integer
-     * @default 0
+     * @default 1
      */
     private int $experience = self::NOVICE;
 
