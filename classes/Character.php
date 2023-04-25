@@ -8,21 +8,21 @@ class Character
     /**
      *  Novice Level
      * 
-     * @var int
+     * @var integer
      */
     const NOVICE = 1;
 
     /**
      *  Medium Level
      * 
-     * @var int
+     * @var integer
      */
     const MEDIUM = 2;
 
     /**
      *  Expert Level
      * 
-     * @var int
+     * @var integer
      */
     const EXPERT = 3;
 
@@ -39,7 +39,7 @@ class Character
     /**
      * Health point
      *
-     * @var int
+     * @var integer
      * @default 100
      */
     private int $healthPoint = 100;
@@ -47,7 +47,7 @@ class Character
     /**
      * Character experience
      *
-     * @var int
+     * @var integer
      * @default 0
      */
     private int $experience = self::NOVICE;
@@ -77,20 +77,20 @@ class Character
      * $coef parameters will be override by the SuperAttack method
      *
      * @param Character $opponent
-     * @param integer $coef
+     * @param integer $coefficient
      * @return self
      */
-    public function attack(Character $opponent, int $coef=1): self
+    public function attack(Character $opponent, int $coefficient=1): self
     {
         switch ($this->experience) {
             case self::NOVICE:
-                $opponent->setHealthPoint($opponent->getHealthPoint() - (10 * $coef));
+                $opponent->setHealthPoint($opponent->getHealthPoint() - (10 * $coefficient));
                 break;
             case self::MEDIUM:
-                $opponent->setHealthPoint($opponent->getHealthPoint() - (20 * $coef));
+                $opponent->setHealthPoint($opponent->getHealthPoint() - (20 * $coefficient));
                 break;
             case self::EXPERT:
-                $opponent->setHealthPoint($opponent->getHealthPoint() - (30 * $coef));
+                $opponent->setHealthPoint($opponent->getHealthPoint() - (30 * $coefficient));
                 break;
         }
         return $this;
