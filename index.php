@@ -4,7 +4,7 @@ require_once "classes/Character.php";
 
 // Création des personnages (instance des objets)
 $batman = new Character("Batman", Character::MEDIUM);
-$superman = new Character("Superman", Character::NOVICE);
+$superman = new Character("Superman");
 
 $title = "{$batman->getName()} Vs. {$superman->getName()}";
 

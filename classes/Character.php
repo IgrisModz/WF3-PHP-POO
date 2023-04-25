@@ -50,12 +50,12 @@ class Character
      * @var int
      * @default 0
      */
-    private int $experience = 0;
+    private int $experience = self::NOVICE;
 
     // Methods definition
     // --
 
-    public function __construct(string $name, int $experience)
+    public function __construct(string $name, int $experience = self::NOVICE)
     {
         $this->name = $name;
         $this->experience = $experience;
