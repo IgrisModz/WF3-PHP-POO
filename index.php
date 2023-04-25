@@ -62,8 +62,11 @@ $superman->greet($batman);
 
     <div>
         Superman riposte d'une attaque suivi d'une super attaque
-        <?php $superman->attack($batman) ?>
-        <?php $superman->superAttack($batman) ?>
+        <?php
+            $superman
+                ->attack($batman)
+                ->superAttack($batman);
+        ?>
         <?= score($batman, $superman) ?>
     </div>
 
@@ -88,15 +91,21 @@ $superman->greet($batman);
 
     <div>
         Superman encore affaiblie lance une double attaque
-        <?php $superman->attack($batman) ?>
-        <?php $superman->attack($batman) ?>
+        <?php
+            $superman
+                ->attack($batman)
+                ->attack($batman);
+        ?>
         <?= score($batman, $superman) ?>
     </div>
 
     <div>
         Batman r&eacute;pond d'une attaque simple suivi d'une attaque secr&egrave;te (et paf un coup de kryptonite)
-        <?php $batman->attack($superman) ?>
-        <?php $batman->secretAttack($superman) ?>
+        <?php
+            $batman
+                ->attack($superman)
+                ->secretAttack($superman);
+        ?>
         <?= score($batman, $superman) ?>
     </div>
 
